@@ -1,0 +1,131 @@
+<html lang="en">
+<head>
+    <title>Pixel Art Maker!</title>
+    
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="pixel.js"></script>
+</head>
+<body>
+  <nav class="navbar navbar-expand-md bg-light navbar-light fixed-top">
+    <h1 class=""></h1>
+     <button type="button" class='btn btn-info' id="load_game" value="Load Game">Load Game</button>
+     <button class="info_icon" data-toggle="modal" data-placement="bottom" title="info" data-target="#game_modal">
+       <a><span class="fa fa-info fa-2x float-xs-right float-md-right float-lg-right"></span></a>
+     </button>
+    <button class="burger_icon" data-toggle="tooltip collapse" title="open menu"  data-target="#side_navigation">
+        <span class="navbar-toggler-icon float-xs-right float-md-right float-lg-right"></span>
+    </button>
+  </nav>
+   <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Winner!</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          Congratulations!You found the graduation Cap!
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+   <!-- The Modal -->
+  <div class="modal fade" id="game_modal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title"><em>Info</em></h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <!-- Modal body -->
+        <div class="modal-body">
+          <em><ul><li>The hamburger icon opens a menu to display a grid.</li>
+            <li>In the grid menu when clicked on hamburger icon -double click on the colored cell to erase it.</li>
+            <li>Make sure to select both the color picker for selecting gradient!</li>
+            <li>Pay attention to the radio buttons!</li><li>Make sure you select the correct radio button before using color picker or gradient appropriately.</li>
+            <li>The Load game button loads the game.</li></ul>
+            Thank you!</em>
+        </div>
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--<h2 class="mrgTop">Design Canvas</h2>-->
+  <table class="mrgTop" id="pixel_canvas"></table>
+  <div class="game_tab display_none">
+    <h2 class="game_header">Fun Game:Find the graduation cap!</h2>
+   
+    <div class="button_display"><button type="button" id="clear_game" class='btn btn-info' value="Clear">Clear Game</button><button type="button" id="rules" class='btn btn-info'  data-toggle="collapse" data-target="#demo">Rules</button>
+      <div id="demo" class="collapse">
+      Click on each table cell to search the Cap!Whoever finds it is the winner!You will find different colors too along the way hopefully!;)
+      </div>
+    </div>
+     <h5 class="display_none">You found the graduation cap!Congratulations!Super proud of ya!</h5>
+   <table class="mrgTop" id="game_canvas"></table>
+  </div>
+  <script src="designs.js"></script>
+  <div id="side_navigation" class="side_navbar">
+   <a href="javascript:void(0)" class="close_btn">&times;</a>
+     <div class="align_center">
+        <div class="card linear-grdient-blk">
+          <h3 class="clr_pnk">Choose a grid</h3>
+          <div class="mrgTop20" id="sizePicker">
+             <div class="flex-container">
+                  <label for="height">Grid Height:</label>
+                  <input type="number" id="input_height" name="height" min="1" value="1">
+                  <label for="width">Grid Width:</label>
+                  <input class="" type="number" id="input_width" name="width" min="1" value="1">
+              </div>
+              <h4 class="mrgTop20">
+                <span class="clr_pnk">Grid Color</span> 
+              </h4>
+              <input type="color" id="grid_color_picker">
+              <div class="mrgTop20">
+                <input type="submit" class="btn btn-success"id="submit" width="60px" name="submit" value="Submit">
+                <input type="button" class="btn btn-secondary" id="clear" width="60px" name="clear" value="Clear">
+                <input type="button" class="btn" id="clear_color" width="60px" name="clear_color" value="Clear color">
+             </div>
+           </div>
+         </div>
+         <div class="mrgTop20 card linear-grdient-blk" id="sizePicker">
+            <h4 class="align_center">
+              <input type="radio" name="color" value="color_picker" id="color_picker" checked><span class="clr_green">Pick a Color</span></input> 
+            </h4>
+            <input class="align_center mrgTop10" type="color" id="colorPicker">
+        </div>
+        <div class="mrgTop20 card linear-grdient-blk" id="sizePicker">
+            <h4>
+              <input type="radio" name="color" value="gradient_picker" id="gradient_picker" checked><span class="clr_red">Pick a Gradient</span></input> 
+            </h4>
+            <div class="flex-container">
+              <input type="color" id="base_gradient" class="">
+              <input type="color" id="right_gradient" class="">
+            </div>
+            <div class="mrgTop10 align_center">
+              <input type="radio" name="gradient" value="linear" id="linear" checked>Linear</input> 
+              <input type="radio" name="gradient" value="radial" id="radial">Radial</input> 
+            </div>
+        </div>
+      </div>
+   </div>
+ </div>
+</body>
+</html>
